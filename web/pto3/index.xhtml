@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Calculadora.</title>
+    </h:head>
+    <h:body>
+        <h:form id="frmCalculadora">
+            <h:panelGrid id="tblIngreso">
+                <h:inputText id="txtIngreso" size="19" readonly="true"/>
+            </h:panelGrid>
+            <h:panelGrid id="tblMantisa">
+                <h:inputText id="txtMantisa" size="19" readonly="true"/>
+            </h:panelGrid>
+            
+            <h:panelGrid id="tblCalculadora" columns="4">
+                <h:commandButton id="btn7" value="7" 
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorPresionado" value="7"/>
+                </h:commandButton>
+                <h:commandButton id="btn8" value="8"
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorPresionado" value="8"/>
+                </h:commandButton>
+                <h:commandButton id="btn9" value="9"
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorPresionado" value="9"/>
+                </h:commandButton>
+                <h:commandButton id="btnSuma" value="+"
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorOperador" value="+"/>
+                </h:commandButton>
+                
+                <h:commandButton id="btn4" value="4"
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorPresionado" value="4"/>
+                </h:commandButton>
+                <h:commandButton id="btn5" value="5"
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorPresionado" value="5"/>
+                </h:commandButton>
+                <h:commandButton id="btn6" value="6"
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorPresionado" value="6"/>
+                </h:commandButton>
+                <h:commandButton id="btnResta" value="- "
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorOperador" value="-"/>
+                </h:commandButton>
+                
+                <h:commandButton id="btn1" value="1"
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorPresionado" value="1"/>
+                </h:commandButton>
+                <h:commandButton id="btn2" value="2"
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorPresionado" value="2"/>
+                </h:commandButton>
+                <h:commandButton id="btn3" value="3"
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorPresionado" value="3"/>
+                </h:commandButton>
+                <h:commandButton id="btnMultiplicar" value="x "
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorOperador" value="x"/>
+                </h:commandButton>
+                
+                <h:commandButton id="btnC" value="C"
+                                 actionListener="#{calculadoraFormBean.borrarDatos()}"/>
+                    
+                <h:commandButton id="btn0" value="0"
+                    actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorPresionado" value="0"/>
+                </h:commandButton>
+                <h:commandButton id="btnIgual" value="="
+                    actionListener="#{calculadoraFormBean.realizarOperacion()}">
+                    <f:param name="valorResultado" value="="/>
+                </h:commandButton>
+                <h:commandButton id="btnDividir" value="/ "
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorOperador" value="/"/>
+                </h:commandButton>
+                 <h:commandButton id="btnPotencia" value="^"
+                                 actionListener="#{calculadoraFormBean.registrarValorSeleccionado()}">
+                    <f:param name="valorOperador" value="^"/>
+                </h:commandButton>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

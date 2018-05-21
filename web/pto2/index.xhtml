@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registro de numeros</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlRegistro" header="Registro de Numeros">
+            <h:form>
+                
+                <p:dataTable id="dtTable" var="registro1" value="#{registroNumeroFormBean.registroNumero}">
+                    <p:column id="columReg">
+                        <p:inputNumber id="inpNum" value="#{registroNumeroFormBean.registroNumero.numIngresado}"/>
+                        <p:commandButton id="btnIngreso" value="Agregar" actionListener="#{registroNumeroFormBean.registroNumero.ingresarNumero()}" update="dtTable"/>
+                    </p:column>
+                    <p:column id="columNum" headerText="Lista de Numeros">
+                        <h:outputText id="otpLista"  value="#{registroNumeroFormBean.registroNumero.registroNum}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+        
+    </h:body>
+    
+    <h:body>
+        <p:panel>
+            
+            <p:commandButton id="btnMaximo" value="MAXIMO" update="lblMax"/>
+            <p:outputLabel id="lblMax" value =" El maximo es #{registroNumeroFormBean.registroNumero.calcularMaximo()} " />
+            
+            
+            
+        </p:panel>
+        <p:panel>
+            <p:commandButton id="btnMinimo" value="MINIMO" update="lblMin"/>
+            <p:outputLabel id="lblMin" value =" El minimo es #{registroNumeroFormBean.registroNumero.calcularMenor()}"/>
+            
+        </p:panel>
+        <p:panel>
+            
+            <p:commandButton id="btnPromedio" value="PROMEDIO" update="lblProm"/>
+            <p:outputLabel id="lblProm" value =" El promedio es #{registroNumeroFormBean.registroNumero.calcularPromedio()}"/>
+            
+        </p:panel>
+    </h:body>
+
+    
+    
+    
+    
+    
+</html>
+

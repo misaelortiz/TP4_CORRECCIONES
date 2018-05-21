@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Libreria</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlLibros" header="Carga de Libros">
+            <h:form id="frmCargaLibros" >
+                <p:panelGrid id="pnlGrdLibros" columns="3" >
+                    <p:outputLabel id="otpIsbn" for="inpIsbn" value="ISBN"/>
+                    <p:inputNumber id="inpIsbn" required="true" value="#{libroFormBeans.libro.isbn}">
+                    </p:inputNumber>
+                    <p:message for="inpIsbn" />
+                    
+                    <p:outputLabel id="otpTitulo" for="inpTitulo" value="Titulo"/>
+                    <p:inputText id="inpTitulo" required="true" value="#{libroFormBeans.libro.titulo}">
+                    </p:inputText>
+                    <p:message for="inpTitulo"/>
+                    
+                    <p:outputLabel id="otpAutor" for="menuAutor" value="Autor"/>
+                    <p:selectOneMenu id="menuAutor" required="true" value="#{libroFormBeans.libro.autor}">
+                        <f:selectItem itemLabel="Seleccione"/>
+                        <f:selectItem itemLabel="Andrew Hunt" itemValue="Andrew Hunt"/>
+                        <f:selectItem itemLabel="Roth Veronica" itemValue="Roth Veronica"/>
+                        <f:selectItem itemLabel="Robert Martin" itemValue="Robert Martin"/>
+                        <f:selectItem itemLabel="Krug Steve" itemValue="Krug Steve"/>
+                        <f:selectItem itemLabel="Roger Pressman" itemValue="Roger Pressman"/>                        
+                    </p:selectOneMenu>
+                    <p:message for="menuAutor"/>
+                    
+                    <p:outputLabel id="otpPrecio" for="inpPrecio" value="Precio"/>
+                    <p:inputNumber id="inpPrecio" required="true" value="#{libroFormBeans.libro.precio}" >
+                    </p:inputNumber>
+                    <p:message for="inpPrecio"/>
+                   
+                    <p:commandButton id="btnAgregar" update="tblLista pnlGrdLibros"
+                                     actionListener="#{libroFormBeans.agregarLibro()}" value="Agregar" />
+                </p:panelGrid>
+                <p:dataTable id="tblLista" var="lista" value="#{libroFormBeans.libros}">
+                    <p:column headerText="ISBN">
+                        <h:outputText value="#{lista.isbn}"/>
+                    </p:column>
+                    <p:column headerText="Titulo">
+                        <h:outputText value="#{lista.titulo}"/>
+                    </p:column>
+                    <p:column headerText="Autor">
+                        <h:outputText value="#{lista.autor}"/>
+                    </p:column>
+                    <p:column headerText="Precio">
+                        <h:outputText value="#{lista.precio}"/>
+                    </p:column>
+                </p:dataTable>
+                
+                <h:panelGroup>
+                    <p:commandButton id="btnListar" value="Buscar Libro"  
+                                     action="#{libroFormBeans.irBusqueda()}"
+                                  style="margin-left: 10px; text-align: center"/>
+                </h:panelGroup>
+            </h:form>
+        </p:panel>
+        
+    </h:body>
+</html>
+
