@@ -5,20 +5,31 @@
  */
 package pto5.aplicacion.modelo.dominio;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+
 
 /**
  *
  * @author E. Misael Ortiz
  */
-public class Profesor {
+public class Profesor implements Serializable{
     
-    private ArrayList <Profesor> profesores= new ArrayList<Profesor>();
+    
     private String nombre;
     private String apellido;
     private String materia;
     private long legajo;
 
+    public Profesor() {
+    }
+
+    public Profesor(String nombre, String apellido, String materia, long legajo) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.materia = materia;
+        this.legajo = legajo;
+    }
+    
     /**
      * @return the nombre
      */
@@ -39,6 +50,8 @@ public class Profesor {
     public String getApellido() {
         return apellido;
     }
+
+    
 
     /**
      * @param apellido the apellido to set
@@ -76,28 +89,7 @@ public class Profesor {
         this.legajo = legajo;
     }
 
-    /**
-     * @param profesor
-     * @return the profesor
-     */
-    public void ingresarProfesor (){
-       
-           
-           
-       }
-       
-    public Profesor visualizarProfesores(){
-        return profesores.get(0);
-    }
-    public ArrayList <Profesor> getProfesor() {
-        return profesores;
-    }
 
-    /**
-     * @param profesor the profesor to set
-     */
-    public void setProfesor(ArrayList <Profesor> profesor) {
-        this.profesores = profesor;
-    }
+       
     
 }

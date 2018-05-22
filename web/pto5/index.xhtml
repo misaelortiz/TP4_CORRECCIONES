@@ -2,48 +2,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Profesor</title>
     </h:head>
     <h:body>
         <p:panel id="pnlProfesor" header="Gestion de Profesor">
-            <h:form>
-                <p:panelGrid id="grdProfesor" columns="1">
+            <h:form id="frmProfesor">
+                <p:growl id="mensajes"  />
+                <p:panelGrid id="grdProfesor" columns="2">
                     
                 
-                    <p:outputLabel id="lblLegajo" value="Legajo"></p:outputLabel>
-                    <p:inputNumber id="txtLegajo" value="#{profesorFormBean.profesor.legajo}"></p:inputNumber>
+                    <p:outputLabel id="lblLegajo" value="Legajo" for="txtLeg" ></p:outputLabel>
+                    <p:inputNumber id="txtLeg" required="true"  value="#{profesorFormBean.profesor.legajo}">
+                    <f:validateLongRange minimum="00001"/>
+                    </p:inputNumber>
                     
-                    <p:outputLabel id="lblNombre" value="Nombre"></p:outputLabel>
-                    <p:inputText id="txtNombre" value="#{profesorFormBean.profesor.nombre}"></p:inputText>
+                    <p:outputLabel id="lblNombre" value="Nombre" for="txtNombre"></p:outputLabel>
+                    <p:inputText id="txtNombre" required="true" requiredMessage="Obligatorio en Mayuscula" value="#{profesorFormBean.profesor.nombre}"></p:inputText>
                     
-                    <p:outputLabel id="lblApellido" value="Apellido"></p:outputLabel>
-                    <p:inputText id="txtApellido" value="#{profesorFormBean.profesor.apellido}"></p:inputText>
+                    <p:outputLabel id="lblApellido" value="Apellido" for="txtApellido"></p:outputLabel>
+                    <p:inputText id="txtApellido" required="true" requiredMessage="Obligatorio en Mayuscula" value="#{profesorFormBean.profesor.apellido}"></p:inputText>
                     
                     <p:outputLabel id="lblMateria" value="Materia"></p:outputLabel>
                     <p:inputText id="txtMateria" value="#{profesorFormBean.profesor.materia}"></p:inputText>
-                     <p:commandButton id="btnIngreso" value="Agregar" actionListener="#{profesorFormBean.profesor.ingresarProfesor()}" update="pnlRegistro" />
+                    <p:commandButton id="btnIngreso" value="Agregar" actionListener="#{profesorFormBean.agregarProfesor()}" 
+                                     update="frmProfesor frmRegistro mensajes" />
                     
                 
                  
                 </p:panelGrid>
             </h:form> 
-            
-        </p:panel>
-        
-    
-    <h:body>
-        <p:panel id="pnlRegistro" header="Lista de Profesores">
-            <h:form>
+      
+            <h:form id="frmRegistro">
                 
-                <p:dataTable id="dtTable" var="registro1" value="#{profesorFormBean.profesor}">
+                <p:dataTable id="dtTable" var="prof" value="#{profesorFormBean.profesores}">
                     
                     <p:column id="columNum"  >
-                        <p:outputLabel id="outLeg" value=" Legajo: #{profesorFormBean.profesor.legajo}"/>
-                        <p:outputLabel id="outNom" value=" Nombre: #{profesorFormBean.profesor.nombre}"/>
-                        <p:outputLabel id="outApe" value=" Apellido: #{profesorFormBean.profesor.apellido}"/>
-                        <p:outputLabel id="outMat" value=" Materia: #{profesorFormBean.profesor.materia}"/>
+                        <p:outputLabel id="outLeg" value=" Legajo: #{prof.legajo}"/>
+                        <p:outputLabel id="outNom" value=" Nombre: #{prof.nombre}"/>
+                        <p:outputLabel id="outApe" value=" Apellido: #{prof.apellido}"/>
+                        <p:outputLabel id="outMat" value=" Materia: #{prof.materia}"/>
                         
                       
                         <p:commandButton onclick="PF('dlg2').show();" update="pnlMostrarDatos" value="Mostrar"></p:commandButton>
@@ -53,11 +53,11 @@
             </h:form>
         </p:panel>
         
-    </h:body>
+    
         
         
             <p:dialog id="dlgDatosProfesor" header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
-            <p:panelGrid id="pnlMostrarDatos" columns="1">
+            <p:panelGrid id="pnlMostrarDatos" columns="2">
             <h:outputLabel id="lblLegajoProfesor" value=" Legajo: #{profesorFormBean.profesor.legajo}" />
             <h:outputLabel id="lblNombreProfesor" value=" Nombre: #{profesorFormBean.profesor.nombre}" />
             <h:outputLabel id="lblApellidoProfesor" value="Apellido: #{profesorFormBean.profesor.apellido}" />
